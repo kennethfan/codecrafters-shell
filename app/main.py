@@ -47,7 +47,7 @@ def run_command(commands) -> Optional[str]:
 
 def main():
     exit_command = 'exit 0'
-    builtin_commands = ['echo', 'exit', 'type']
+    builtin_commands = ['echo', 'exit', 'type', 'pwd']
     while True:
         # Uncomment this block to pass the first stage
         sys.stdout.write("$ ")
