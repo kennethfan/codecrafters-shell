@@ -55,7 +55,8 @@ def main():
 
         # Wait for user input
         command = input()
-        if command.strip() == '':
+        command = command.strip()
+        if command == '':
             continue
         if exit_command == command:
             sys.exit(0)
@@ -79,7 +80,7 @@ def main():
             output = run_command(commands)
             if output:
                 print(output)
-            continue
+            sys.exit(0)
         print(f'{command}: command not found')
 
 
