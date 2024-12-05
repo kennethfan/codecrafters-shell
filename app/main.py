@@ -31,7 +31,7 @@ def echo_command(command: str):
 
 def main():
     exit_command = 'exit 0'
-    valid_commands = ['echo', 'exit', 'type']
+    bultin_commands = ['echo', 'exit', 'type']
     while True:
         # Uncomment this block to pass the first stage
         sys.stdout.write("$ ")
@@ -45,11 +45,14 @@ def main():
             continue
         if command.startswith('type '):
             command = command[5:]
-            path = find_command(command, get_paths())
-            if path is not None:
-                print(f'{command} is {path}')
+            if command in bultin_commands:
+                print(f'{command} is a shell builtin')
             else:
-                print(f'{command}: not found')
+                path = find_command(command, get_paths())
+                if path is not None:
+                    print(f'{command} is {path}')
+                else:
+                    print(f'{command}: not found')
             continue
         print(f'{command}: command not found')
 
