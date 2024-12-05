@@ -13,7 +13,7 @@ def echo_command(command: str):
 
 def main():
     exit_command = 'exit 0'
-    valid_commands = ['echo', 'exit']
+    valid_commands = ['echo', 'exit', 'type']
     while True:
         # Uncomment this block to pass the first stage
         sys.stdout.write("$ ")
