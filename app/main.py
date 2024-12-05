@@ -1,4 +1,22 @@
 import sys
+import os
+
+
+def get_paths():
+    path = os.getenv('PATH')
+    if path == '':
+        return []
+    return path.split(':')
+
+
+def find_command(command: str, paths: list):
+    for path in paths:
+        if not os.path.exists(path):
+            continue
+        for _, _, files in os.walk(path):
+            if command in files:
+                return os.path.join(path, command)
+    return None
 
 
 def echo_command(command: str):
@@ -27,8 +45,9 @@ def main():
             continue
         if command.startswith('type '):
             command = command[5:]
-            if command in valid_commands:
-                print(f'{command} is a shell builtin')
+            path = find_command(command, get_paths())
+            if path is not None:
+                print(f'{command} is {path}')
             else:
                 print(f'{command}: not found')
             continue
