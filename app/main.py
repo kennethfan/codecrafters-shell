@@ -81,8 +81,8 @@ def main():
             commands[0] = path
             output = run_command(commands)
             if output:
-                print(output)
-            sys.exit(0)
+                print(output,end='')
+            continue
         print(f'{command}: command not found')
 
 
