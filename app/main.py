@@ -29,7 +29,7 @@ def find_command(command: str) -> Optional[str]:
 
 
 def echo_command(command: str) -> bool:
-    if command == 'echo':
+    if 'echo' == command:
         print('')
         return True
     if command.startswith('echo '):
@@ -62,6 +62,9 @@ def main():
             break
         if exit_command == command:
             sys.exit(0)
+        if 'pwd' == command:
+            print(os.getcwd())
+            continue
         if echo_command(command):
             continue
         if command.startswith('type '):
@@ -81,7 +84,7 @@ def main():
             commands[0] = path
             output = run_command(commands)
             if output:
-                print(output,end='')
+                print(output, end='')
             continue
         print(f'{command}: command not found')
 
