@@ -13,7 +13,7 @@ def echo_command(command: str):
 
 def main():
     exit_command = 'exit 0'
-    valid_commands = [exit_command]
+    valid_commands = ['echo', 'exit']
     while True:
         # Uncomment this block to pass the first stage
         sys.stdout.write("$ ")
@@ -24,6 +24,13 @@ def main():
         if exit_command == command:
             sys.exit(0)
         if echo_command(command):
+            continue
+        if command.startswith('type '):
+            command = command[5:]
+            if command in valid_commands:
+                print(f'{command} is a shell builtin')
+            else:
+                print(f'{command}: command not found')
             continue
         print(f'{command}: command not found')
 
