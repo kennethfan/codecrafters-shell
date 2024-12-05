@@ -82,6 +82,7 @@ def main():
             output = run_command(commands)
             if output:
                 print(output)
+            sys.exit(0)
         print(f'{command}: command not found')
 
 
