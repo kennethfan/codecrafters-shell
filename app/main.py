@@ -30,7 +30,7 @@ def main():
             if command in valid_commands:
                 print(f'{command} is a shell builtin')
             else:
-                print(f'{command}: command not found')
+                print(f'{command}: not found')
             continue
         print(f'{command}: command not found')
 
