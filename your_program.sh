@@ -12,4 +12,5 @@ set -e # Exit early if any commands fail
 #
 # - Edit this to change how your program runs locally
 # - Edit .codecrafters/run.sh to change how your program runs remotely
+find app -name "__pycache__"  -exec rm -rf {} \;
 exec pipenv run python3 -u -m app.main "$@"
