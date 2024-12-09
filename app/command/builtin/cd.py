@@ -22,4 +22,4 @@ class Cd(Command):
         if os.path.exists(absolute_path):
             os.chdir(absolute_path)
             return
-        print(f'"cd: {path}: No such file or directory')
+        print(f'cd {path}: No such file or directory')
