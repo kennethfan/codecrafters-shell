@@ -5,11 +5,10 @@ from app.command.builtin.cd import Cd
 from app.command.builtin.echo import Echo
 from app.command.builtin.exit import Exit
 from app.command.builtin.pwd import Pwd
+from app.command.builtin.type import Type
 from app.command.command import Command
 from app.command.custom.delegate import Delegate
 from app.util.common import find_command
-
-builtin_commands = ['echo', 'exit', 'type', 'pwd', 'cd']
 
 
 class CommandDispatcher:
@@ -18,6 +17,7 @@ class CommandDispatcher:
         'exit': lambda input_str, args: Exit(input_str, args),
         'cd': lambda input_str, args: Cd(input_str, args),
         'pwd': lambda input_str, args: Pwd(input_str, args),
+        'type': lambda input_str, args: Type(input_str, args),
     }
 
     @classmethod

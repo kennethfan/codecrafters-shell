@@ -1,12 +1,13 @@
 from app.command.command import Command
-from app.dispatch import builtin_commands
 from app.util.common import find_command
 
 
 class Type(Command):
+    builtin_commands = ['echo', 'exit', 'type', 'pwd', 'cd']
+
     def execute(self):
         command = self.args[1]
-        if command in builtin_commands:
+        if command in self.builtin_commands:
             print(f'{command} is a shell builtin')
             return
 
