@@ -3,8 +3,7 @@ from typing import List
 
 
 class Command(ABC):
-    def __init__(self, input_str: str, args: List[str]):
-        self.input_str = input_str
+    def __init__(self, args: List[str]):
         self.args = args
 
     @abstractmethod

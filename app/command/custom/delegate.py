@@ -1,6 +1,7 @@
 import subprocess
 
 from app.command.command import Command
+from app.error.errors import ExecuteError
 
 
 class Delegate(Command):
@@ -10,6 +11,9 @@ class Delegate(Command):
 
     def execute(self):
         result = subprocess.run(self.args, capture_output=True, text=True)
-        if result.stderr:
-            print(result.stderr, end='')
+        if 0 != result.returncode:
+            if result.stderr.endswith("\n"):
+                raise ExecuteError(result.stderr[0:-1])
+            else:
+                raise ExecuteError(result.stderr)
         print(result.stdout, end='')

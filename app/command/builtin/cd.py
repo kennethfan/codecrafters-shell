@@ -1,16 +1,16 @@
 import os
 
 from app.command.command import Command
+from app.error.errors import ExecuteError
 
 
 class Cd(Command):
-    def execute(self):
+    def execute(self) -> bool:
         if len(self.args) == 1:
             os.chdir(os.getcwd())
-            return
+            return True
         if (len(self.args)) > 2:
-            print('cd: too many arguments')
-            return
+            raise ExecuteError('cd: too many arguments')
 
         path = self.args[1]
         absolute_path = path
@@ -22,4 +22,4 @@ class Cd(Command):
         if os.path.exists(absolute_path):
             os.chdir(absolute_path)
             return
-        print(f'cd: {path}: No such file or directory')
+        raise ExecuteError(f'cd: {path}: No such file or directory')

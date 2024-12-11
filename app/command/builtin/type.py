@@ -1,4 +1,5 @@
 from app.command.command import Command
+from app.error.errors import ExecuteError
 from app.util.common import find_command
 
 
@@ -15,4 +16,4 @@ class Type(Command):
         if path is not None:
             print(f'{command} is {path}')
         else:
-            print(f'{command}: not found')
+            raise ExecuteError(f'{command}: not found')

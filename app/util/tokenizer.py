@@ -1,5 +1,7 @@
 from typing import List, Optional
 
+from app.error.errors import TokenError
+
 
 class Tokenizer:
     _SINGLE_QUOTE = '\''
@@ -26,6 +28,9 @@ class Tokenizer:
         self._cur_token_chs = []
 
     def tokenize(self) -> List[str]:
+        """
+        parse input str to token list
+        """
         while True:
             ch = self._next_ch()
             if ch is None:
@@ -40,7 +45,7 @@ class Tokenizer:
         elif ch == self._ESCAPE:
             self._handle_escape()
         else:
-            self._handle_normal(ch)
+            self._handle_default(ch)
 
     def _next_ch(self) -> Optional[str]:
         if self._pos < self._length:
@@ -55,7 +60,7 @@ class Tokenizer:
         self._token_end()
 
     def _error(self):
-        raise ValueError(f'{self._input_str} is valid')
+        raise TokenError(f'{self._input_str} is valid')
 
     def _token_end(self):
         if len(self._cur_token_chs) == 0:
@@ -85,7 +90,7 @@ class Tokenizer:
             return
         self._cur_token_chs.append(self._WHITE_SPACE)
 
-    def _handle_normal(self, ch: str):
+    def _handle_default(self, ch: str):
         if ch.isspace() and not self._in_single_quote:
             self._token_end()
             return
