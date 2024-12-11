@@ -9,6 +9,7 @@ from app.command.builtin.type import Type
 from app.command.command import Command
 from app.command.custom.delegate import Delegate
 from app.util.common import find_command
+from app.util.tokenizer import Tokenizer
 
 
 class CommandDispatcher:
@@ -30,7 +31,9 @@ class CommandDispatcher:
         """
         if '' == input_str.strip():
             return None
-        args = input_str.split()
+        args = Tokenizer(input_str).tokenize()
+        if len(args) == 0:
+            return None
         cmd = args[0]
         cmd_func = cls.command_init_func.get(cmd)
         if cmd_func is not None:

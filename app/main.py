@@ -16,7 +16,11 @@ def main():
             if input_str == '':
                 continue
             break
-        command = CommandDispatcher.dispatch(input_str)
+        try:
+            command = CommandDispatcher.dispatch(input_str)
+        except ValueError as e:
+            print(e)
+            continue
         if command is None:
             print(f'{input_str}: command not found')
             continue
