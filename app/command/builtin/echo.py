@@ -6,4 +6,6 @@ class Echo(Command):
         if len(self.args) == 1:
             print('')
             return
-        print(self.input_str[len('echo') + 1:])
+        for arg in self.args[1:]:
+            print(arg, end=' ')
+        print('')
