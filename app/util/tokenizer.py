@@ -110,7 +110,6 @@ class Tokenizer:
             return
         if self._LF == ch:
             return
-        self._cur_token_chs.append(self._ESCAPE)
         self._cur_token_chs.append(ch)
 
     def _handle_default(self, ch: str):
