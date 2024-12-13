@@ -99,6 +99,7 @@ class Tokenizer:
         if self._in_double_quote:
             mp_ch = self._QUOTE_ESCAPE_MAPPING.get(ch)
             if mp_ch is None:
+                self._cur_token_chs.append(self._ESCAPE)
                 self._cur_token_chs.append(ch)
                 return
             self._cur_token_chs.append(mp_ch)
@@ -109,6 +110,7 @@ class Tokenizer:
             return
         if self._LF == ch:
             return
+        self._cur_token_chs.append(self._ESCAPE)
         self._cur_token_chs.append(ch)
 
     def _handle_default(self, ch: str):
