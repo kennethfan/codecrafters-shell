@@ -17,7 +17,7 @@ class Tokenizer:
         # 'r': _CR,
         # 'n': _LF,
         _ESCAPE: _ESCAPE,
-        _SINGLE_QUOTE: _SINGLE_QUOTE,
+        # _SINGLE_QUOTE: _SINGLE_QUOTE,
         _DOUBLE_QUOTE: _DOUBLE_QUOTE,
         _DOLLAR: _DOLLAR,
     }
