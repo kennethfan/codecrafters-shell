@@ -13,9 +13,9 @@ class Tokenizer:
     _CR = '\r'
     _LF = '\n'
     _QUOTE_ESCAPE_MAPPING = {
-        't': _TAB,
-        'r': _CR,
-        'n': _LF,
+        # 't': _TAB,
+        # 'r': _CR,
+        # 'n': _LF,
         _ESCAPE: _ESCAPE,
         _SINGLE_QUOTE: _SINGLE_QUOTE,
         _DOUBLE_QUOTE: _DOUBLE_QUOTE,
